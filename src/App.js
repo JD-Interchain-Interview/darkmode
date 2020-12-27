@@ -7,6 +7,9 @@ import { useDarkMode } from './store/Mode/useDarkMode';
 import { darkMode, lightMode } from './store/Mode/theme';
 import { GlobalStyles } from './store/Mode/global';
 
+import Navbar from './components/Navbar';
+import Home from './components/Home'; 
+
 function App() {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
 
@@ -21,7 +24,8 @@ function App() {
       <ThemeProvider theme={themeMode}>
         <div className="App">
           <GlobalStyles/>
-          Hello World
+          <Navbar toggleTheme={toggleTheme} theme={theme}/>
+          <Route exact path='/'><Home toggleTheme={toggleTheme} theme={theme}/></Route>
         </div>
       </ThemeProvider>
     </Router>
